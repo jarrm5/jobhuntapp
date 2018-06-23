@@ -1,0 +1,5 @@
+com\jarrm5\util\App.class
+com\jarrm5\action\LoginAction.class
+com\jarrm5\model\AppUser.class
+com\jarrm5\listener\HibernateListener.class
+com\jarrm5\dao\AppUserDao.class
