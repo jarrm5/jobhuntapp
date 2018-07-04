@@ -17,6 +17,18 @@ public class Company {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Company(int companyId, String companyName, String website, String street,
+			String city, String state, String zip) {
+		super();
+		this.companyId = companyId;
+		this.companyName = companyName;
+		this.website = website;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+	}
+
 	public Company(String companyName, String website, String street, String city, String state, String zip) {
 		super();
 		this.companyName = companyName;

@@ -4,6 +4,7 @@ import com.jarrm5.dao.AppUserDao;
 import com.jarrm5.dao.CompanyDao;
 import com.jarrm5.dao.JobListingDao;
 import com.jarrm5.model.AppUser;
+import com.jarrm5.model.Company;
 
 public class App {
 
@@ -14,11 +15,14 @@ public class App {
 		boolean result = appUserDao.authenticateAppUser(appUser);
 		appUserDao.listAppUsers();*/
 		
-		/*CompanyDao companyDao = new CompanyDao();
-		companyDao.listCompanies();*/
+		CompanyDao companyDao = new CompanyDao();
+		//companyDao.listCompanies();
+		companyDao.listJobListingsByCompanyName(new Company(1,"","","","","",""));
 		
-		JobListingDao jobListingDao = new JobListingDao();
-		jobListingDao.listJobListings();
+		/*JobListingDao jobListingDao = new JobListingDao();
+		jobListingDao.listJobListings();*/
+		
+		
 		
 	}
 

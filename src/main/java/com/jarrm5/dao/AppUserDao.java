@@ -27,6 +27,7 @@ public class AppUserDao {
 	      }
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void listAppUsers(){
 		
 		Session session = sessionFactory.openSession();

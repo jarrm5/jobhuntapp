@@ -3,6 +3,7 @@ package com.jarrm5.dao;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.HibernateException;
@@ -15,6 +16,7 @@ import org.hibernate.dialect.identity.SybaseAnywhereIdentityColumnSupport;
 import com.jarrm5.listener.HibernateListener;
 import com.jarrm5.model.AppUser;
 import com.jarrm5.model.Company;
+import com.jarrm5.model.JobListing;
 
 public class CompanyDao {
 	
@@ -30,6 +32,7 @@ public class CompanyDao {
 	      }
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void listCompanies() {
 		
 		Session session = sessionFactory.openSession();
@@ -55,8 +58,31 @@ public class CompanyDao {
 			e.printStackTrace(); 
 		} finally {
 			session.close(); 
-		}
-		
+		}	
+	}
+	
+	public void listJobListingsByCompanyName(Company company) {
+		Session session = sessionFactory.openSession();
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();
+			Company selectedCompany = (Company)session.get(Company.class,company.getCompanyId());
+			System.out.println(selectedCompany.getCompanyName());
+			System.out.println(selectedCompany.getWebsite());
+			//Now create the set iterator to print out the jobListings for the retrieved company
+			for (Iterator iterator = selectedCompany.getJobListings().iterator(); iterator.hasNext();) {
+				JobListing jobListing = (JobListing)iterator.next();
+				System.out.println(jobListing.getPositionTitle());
+			}
+			transaction.commit();
+		} catch (HibernateException e) {
+			if (transaction!=null) 
+				transaction.rollback();
+			e.printStackTrace(); 
+		} finally {
+			session.close(); 
+		}	
 	}
 
 }
