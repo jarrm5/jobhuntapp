@@ -20,10 +20,6 @@ public class AppUserDao {
 	
 	public AppUserDao() {
 		try {
-			/*sessionFactory = new Configuration()
-		               .configure("hibernate.cfg.xml")
-		               .addAnnotatedClass(AppUser.class)
-		               .buildSessionFactory();*/
 			sessionFactory = (SessionFactory) ServletActionContext.getServletContext().getAttribute(HibernateListener.KEY_NAME);
 	      } catch (Throwable ex) { 
 	         System.err.println("Failed to create sessionFactory object." + ex);
@@ -31,8 +27,6 @@ public class AppUserDao {
 	      }
 	}
 	
-	/* Method to  READ all the Users to the system */
-	@SuppressWarnings("unchecked")
 	public void listAppUsers(){
 		
 		Session session = sessionFactory.openSession();
@@ -49,7 +43,8 @@ public class AppUserDao {
 			}
 			transaction.commit();
 		} catch (HibernateException e) {
-			if (transaction!=null) transaction.rollback();
+			if (transaction!=null) 
+				transaction.rollback();
 			e.printStackTrace(); 
 		} finally {
 			session.close(); 

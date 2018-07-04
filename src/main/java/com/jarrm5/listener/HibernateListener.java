@@ -23,10 +23,6 @@ public class HibernateListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		try {
-			/*URL url = HibernateListener.class.getResource("/hibernate.cfg.xml");
-			configuration = new Configuration().configure(url);
-			sessionFactory = configuration.buildSessionFactory();*/
-			//sessionFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(AppUser.class).buildSessionFactory();
 			Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
 			sessionFactory = configuration.buildSessionFactory();
 			servletContextEvent.getServletContext().setAttribute(KEY_NAME, sessionFactory);

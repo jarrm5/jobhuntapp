@@ -2,18 +2,10 @@ package com.jarrm5.model;
 
 import javax.persistence.*;
 
-//@Entity
-//@Table(name = "app_user")
 public class AppUser {
 	
-	//@Id @GeneratedValue
-	//@Column(name = "user_id")
 	int userId;
-	
-	//@Column(name = "username")
 	String username;
-	
-	//@Column(name = "password")
 	String password;
 	
 	public AppUser() {}

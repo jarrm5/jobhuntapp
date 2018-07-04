@@ -26,6 +26,8 @@
       </property>
       
       <mapping resource="com/jarrm5/hibernate/AppUser.hbm.xml" />
+      <mapping resource="com/jarrm5/hibernate/Company.hbm.xml" />
+      <mapping resource="com/jarrm5/hibernate/JobListing.hbm.xml" />
       
    </session-factory>
 </hibernate-configuration>

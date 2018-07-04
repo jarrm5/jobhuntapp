@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.jarrm5.model.JobListing" table="job_listing">
+    
+        <id name="jobListingId" type="int">
+            <column name="job_listing_id" />
+            <generator class="identity" />
+        </id>
+        
+        <property name="positionTitle" type="string">
+            <column name="position_title" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="listingLink" type="string">
+            <column name="listing_link" />
+        </property>
+        <property name="dateApplied" type="java.util.Date">
+            <column name="date_applied" />
+        </property>
+        
+        <many-to-one name="company" class="com.jarrm5.model.Company" fetch="join">
+        	<column name="company_id"></column>
+        </many-to-one>
+        
+    </class>
+</hibernate-mapping>

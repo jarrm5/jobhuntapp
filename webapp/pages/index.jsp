@@ -9,6 +9,7 @@
 	<body>
 
 		<h2>Welcome <s:property value="username"/></h2>
-
+		<table>
+		</table>
 	</body>
 </html>

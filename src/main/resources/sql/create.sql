@@ -28,9 +28,10 @@ CREATE TABLE JOB_LISTING (
 	position_title varchar(50) NOT NULL,
 	description varchar(200),
 	listing_link varchar(200),
-	location_id int,
+	date_applied date,
+	company_id int,
 	PRIMARY KEY (job_listing_id),
-	CONSTRAINT FK_JOB_LISTING_LOCATION FOREIGN KEY (location_id) REFERENCES LOCATION(location_id)
+	CONSTRAINT FK_JOB_LISTING_COMPANY FOREIGN KEY (company_id) REFERENCES COMPANY(company_id)
 );
 
 CREATE TABLE USER_JOB_LISTING (
@@ -46,4 +47,14 @@ CREATE TABLE CONTACT_JOB_LISTING (
 	CONSTRAINT FK_CONTACT_ID_USER_JOB_LISTING FOREIGN KEY (contact_id) REFERENCES CONTACT(contact_id),
 	CONSTRAINT FK_JOB_LISTING_ID_CONTACT_JOB_LISTING FOREIGN KEY (job_listing_id) REFERENCES JOB_LISTING(job_listing_id)
 );
+
+CREATE TABLE COMPANY (
+	company_id int NOT NULL AUTO_INCREMENT,
+	company_name varchar(50) NOT NULL,
+	website varchar(50),
+	location_id int, 
+	CONSTRAINT FK_LOCATION_ID FOREIGN KEY (location_id) REFERENCES LOCATION(location_id),
+	PRIMARY KEY (company_id)
+);
+
 

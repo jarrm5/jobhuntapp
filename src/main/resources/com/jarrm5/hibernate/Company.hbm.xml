@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.jarrm5.model.Company" table="company">
+    
+        <id name="companyId" type="int">
+            <column name="company_id" />
+            <generator class="identity" />
+        </id>
+        
+        <property name="companyName" type="string">
+            <column name="company_name" />
+        </property>
+        <property name="website" type="string">
+            <column name="website" />
+        </property>
+        <property name="street" type="string">
+            <column name="street" />
+        </property>
+        <property name="city" type="string">
+            <column name="city" />
+        </property>
+        <property name="state" type="string">
+            <column name="state" />
+        </property>
+        <property name="zip" type="string">
+            <column name="zip" />
+        </property>
+        
+        <set name="jobListings" table="job_listing" cascade="all">
+            <key column="company_id"/>
+            <one-to-many class="com.jarrm5.model.JobListing"/>
+        </set>
+        
+    </class>
+</hibernate-mapping>
